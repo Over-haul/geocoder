@@ -52,5 +52,9 @@ module Geocoder::Result
     def address
       [place_name, street, city, state, postal_code, country].compact.join(", ")
     end
+
+    def full_address?
+      street.present?
+    end
   end
 end
