@@ -41,7 +41,9 @@ module Geocoder::Result
       @data['context'].map { |c| c['text'] if c['id'] =~ /country/ }.compact.first
     end
 
-    alias_method :country_code, :country
+    def country_code
+      @data['context'].map { |c| c['short_code'] if c['id'] =~ /country/ }.compact.first.try(:upcase)
+    end
 
     def neighborhood
       @data['context'].map { |c| c['text'] if c['id'] =~ /neighborhood/ }.compact.first
@@ -52,4 +54,3 @@ module Geocoder::Result
     end
   end
 end
-
