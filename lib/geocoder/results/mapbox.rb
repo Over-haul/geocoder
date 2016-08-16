@@ -54,7 +54,7 @@ module Geocoder::Result
     end
 
     def full_address?
-      @data['id'] =~ /address/
+      @data['id'] =~ /address/ && @data['address'].present?
     end
   end
 end
